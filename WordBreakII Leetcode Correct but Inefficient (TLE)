@@ -1,0 +1,42 @@
+class Solution {
+    public List<String> wordBreak(String s, List<String> wordDict) {
+        
+        if(s.length()==0){
+        return null;
+        
+        }
+        
+        ArrayList<String> m=new ArrayList<String>();
+        
+        for(int i=1;i<=s.length();i++){
+            
+            String x=s.substring(0,i);
+            if(wordDict.contains(x)){
+                List <String>j=wordBreak(s.substring(i,s.length()),wordDict);
+                if(j==null){
+                m.add(x);
+                }
+                else{
+                for(String a:j){
+                m.add(x+" "+a);
+                
+                }
+                }
+                //System.out.println(x+"-"+s);
+                
+            }
+        }
+                
+         return m;       
+                
+                
+
+            
+            
+
+        
+        
+        
+
+    }
+}
