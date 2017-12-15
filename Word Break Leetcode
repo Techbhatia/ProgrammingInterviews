@@ -1,0 +1,41 @@
+class Solution {
+    public boolean wordBreak(String s, List<String> wordDict) {
+        
+        boolean dp[]=new boolean[s.length()+1];
+        for(int i=1;i<=s.length();i++){
+         String x=s.substring(0,i);
+            if(dp[i]!=true){
+                if(wordDict.contains(x)){
+                    dp[i]=true;
+
+                }
+            }
+           
+            
+            if(dp[i]==true){
+                 if(i==s.length()){
+                return dp[i];
+                 }
+            for(int j=i+1;j<=s.length();j++){
+            
+                String y=s.substring(i,j);
+                if(wordDict.contains(y)){
+                dp[j]=true;
+                }
+                
+                if(j==s.length()){
+                    if(dp[j]==true){
+                    return dp[j];
+                    }
+                }
+                
+                }
+            
+            }
+        
+        }
+        
+        return dp[dp.length-1];
+        
+    }
+}
